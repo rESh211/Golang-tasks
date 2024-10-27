@@ -17,7 +17,6 @@ type User struct {
 	g1 := append(g, &newM)
 	return g1
 }*/
-//ddfdf
 
 func run(arr []*User) (errMsg string) {
 	defer func() {
