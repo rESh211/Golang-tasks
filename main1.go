@@ -16,7 +16,8 @@ type User struct {
 	newM := User{id: "581288", name: "Dima", email: "Dima8248@mail.ru"}
 	g1 := append(g, &newM)
 	return g1
-}*/ //
+}*/
+//ddfdf
 
 func run(arr []*User) (errMsg string) {
 	defer func() {
