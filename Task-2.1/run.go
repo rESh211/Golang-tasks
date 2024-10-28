@@ -1,4 +1,4 @@
-package legacy
+package products
 
 import (
 	"fmt"
@@ -17,7 +17,8 @@ func (u *User) GetAge() int {
 	return u.age
 }
 
-func main() {
+// func main() {
+func Run() {
 	var num1 int = 10
 	var num2 int = num1
 	num2 = 20
