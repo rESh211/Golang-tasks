@@ -1,4 +1,4 @@
-package main
+package products
 
 import (
 	"fmt"
@@ -17,7 +17,8 @@ func (u *User) GetAge() int {
 	return u.age
 }
 
-func main() {
+// func main() {
+func Run() {
 	var num1 int = 10
 	var num2 int = num1
 	num2 = 20
@@ -41,7 +42,7 @@ func main() {
 
 	fmt.Println(gg1.GetName())
 
-	product := new(Product.Product)
+	product := new(Product)
 	product.Name = "Sergey"
 	fmt.Println(product)
 }
