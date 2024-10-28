@@ -1,3 +1,7 @@
+package legacy
+
+import "fmt"
+
 func test2() {
 	arr := []int{-1, -3, -5, 4, 5, 8}
 

@@ -1,4 +1,4 @@
-package main
+package legacy
 
 import (
 	"fmt"
@@ -41,7 +41,7 @@ func main() {
 
 	fmt.Println(gg1.GetName())
 
-	product := new(Product.Product)
+	product := new(Product)
 	product.Name = "Sergey"
 	fmt.Println(product)
 }

@@ -1,4 +1,4 @@
-package product
+package legacy
 
 type Product struct {
 	Name  string
