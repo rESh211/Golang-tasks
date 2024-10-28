@@ -1,7 +1,5 @@
 package main
 
-// import legacy "github.com/rESh211/golang-tasks/Legacy"
-
 /*
 В данном файле и только в нем будет хранится функция main
 Все задания (занятия) делать в отдельных папках следующим подходом:
@@ -25,5 +23,5 @@ func main() {
 Подробные шпаргалки в файле HELP.md. Его удобнее смотреть на самом github, там он красиво рисуется
 */
 func main() {
-	// product := &legacy.Product{}
+
 }
