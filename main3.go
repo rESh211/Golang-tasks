@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/rESh211/golang-tasks/Legacy"
 )
 
 type User struct {
@@ -41,7 +43,7 @@ func main() {
 
 	fmt.Println(gg1.GetName())
 
-	product := new(Product.Product)
+	product := new(Legacy.Product)
 	product.Name = "Sergey"
 	fmt.Println(product)
 }
