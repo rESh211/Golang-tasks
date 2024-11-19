@@ -1,8 +1,6 @@
-package legacy
+package task1
 
-import "fmt"
-
-func test2() {
+/*func test2() {
 	arr := []int{-1, -3, -5, 4, 5, 8}
 
 	// index := indexOf(arr, isPositive)
@@ -20,7 +18,7 @@ func test2() {
 	positiveDigits := Filter(arr, isPositive)
 	fmt.Println(positiveDigits)
 
-	fmt.Println(Find[int](arr, isPositive))
+	fmt.Println(find[int](arr, isPositive))
 
 	fmt.Println(Sort[int](arr, func(a int, b int) int {
 		return a - b
@@ -48,7 +46,7 @@ func some[T any](arr []T, f func(val T) bool) bool {
 	return index != -1
 }
 
-func Filter[T any](arr []T, f func(val T) bool) []T {
+func filter[T any](arr []T, f func(val T) bool) []T {
 	newArr := make([]T, 0)
 
 	for _, j := range arr {
@@ -62,7 +60,7 @@ func Filter[T any](arr []T, f func(val T) bool) []T {
 	return newArr
 }
 
-func Find[T any](arr []T, f func(val T) bool) T {
+func find[T any](arr []T, f func(val T) bool) T {
 	index := indexOf[T](arr, f)
 	if index != -1 {
 		return arr[index]
@@ -71,7 +69,7 @@ func Find[T any](arr []T, f func(val T) bool) T {
 	}
 }
 
-func Sort[T any](arr []T, f func(first T, second T) int) []T {
+func sort[T any](arr []T, f func(first T, second T) int) []T {
 	for indexI, valI := range arr {
 		for indexJ, valJ := range arr {
 			compareRes := f(valI, valJ)
@@ -85,17 +83,17 @@ func Sort[T any](arr []T, f func(first T, second T) int) []T {
 	return arr
 }
 
-func ForEach[T any](arr []T, f func(val T)) {
+func forEach[T any](arr []T, f func(val T)) {
 	for _, j := range arr {
 		f(j)
 	}
 }
 
-func Map[TIn any, TOut any](arr []TIn, f func(val TIn) TOut) []TOut {
+/*func map[TIn any, TOut any](arr []TIn, f func(val TIn) TOut) []TOut {
 	newArr := make([]TOut, len(arr))
 	for _, j := range arr {
 		newArr = append(newArr, f(j))
 	}
 
 	return newArr
-}
+}*/
