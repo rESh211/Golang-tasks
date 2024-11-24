@@ -1,5 +1,9 @@
 package main
 
+import (
+	run "github.com/rESh211/golang-tasks/Task-2.2"
+)
+
 /*
 В данном файле и только в нем будет хранится функция main
 Все задания (занятия) делать в отдельных папках следующим подходом:
@@ -15,13 +19,16 @@ package main
 
 import legacy "github.com/rESh211/golang-tasks/Legacy"
 
-func main() {
-	product := &legacy.Product{}
-}
+	func main() {
+		product := &legacy.Product{}
+	}
+
 ================================================================================
 
 Подробные шпаргалки в файле HELP.md. Его удобнее смотреть на самом github, там он красиво рисуется
 */
 func main() {
-
+	//task1.Run()
+	//products.Run()
+	run.Run()
 }
