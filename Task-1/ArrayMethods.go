@@ -1,5 +1,7 @@
 package task1
 
+import "fmt"
+
 type User struct {
 	id    string
 	name  string
@@ -7,24 +9,26 @@ type User struct {
 	age   int
 }
 
-func Push(arr []*User) []*User { // дабавление в начала массива
-	g := &User{id: "684848", name: "Ilya", email: "Ilya_Hte@gmail.com", age: 32}
-	return append([]*User{g}, arr...)
+// Добавление в начало массива.
+func Push(arr []*User, arr1 []*User) []*User {
+	return append(arr1, arr...)
 }
 
-func Append(arr []*User) []*User { // дабавление в конец массива
-	g := &User{id: "357586", name: "Katya", email: "Katya81_1@gmail.com", age: 27}
-	return append(arr, []*User{g}...)
+// Добавление в конец массива.
+func Append(arr []*User, arr1 []*User) []*User {
+	return append(arr, arr1...)
 }
 
-func Pop(arr []*User) []*User { // удаление последней строчки из массива
+// Удаление последней строчки из массива.
+func Pop(arr []*User) []*User {
 	if len(arr) == 0 {
 		return arr
 	}
 	return arr[:len(arr)-1]
 }
 
-func Delete(arr []*User, s string) []*User { // удаление нужного нам массива
+// Удаление последней строчки из массива.
+func Delete(arr []*User, s string) []*User {
 	g := make([]*User, 0)
 	for _, i := range arr {
 		if i.id == s {
@@ -36,12 +40,13 @@ func Delete(arr []*User, s string) []*User { // удаление нужного 
 	return g
 }
 
-func Concat(arr []*User) []*User { // объединение массивов
-	g := &User{id: "864728", name: "Galya", email: "22Galya@gmail.com", age: 36}
-	return append(arr, []*User{g}...)
+// Объединение массивов.
+func Concat(arr []*User, arr1 []*User) []*User {
+
+	return append(arr, arr1...)
 }
 
-/*func run(arr []*User) (errMsg string) {
+func Run1(arr []*User) (errMsg string) {
 	defer func() {
 		if rec := recover(); rec != nil {
 			errMsg = fmt.Sprintf("Есть паника: %v", rec)
@@ -62,9 +67,10 @@ func Concat(arr []*User) []*User { // объединение массивов
 	}
 
 	return ""
-}*/
+}
 
-func IndexOf[T any](arr []T, f func(val T) bool) int { //Получение индекса элемента по заданному условию
+//Получение индекса элемента по заданному условию.
+func IndexOf[T any](arr []T, f func(val T) bool) int {
 	for i, y := range arr {
 		if f(y) {
 			return i
@@ -73,12 +79,14 @@ func IndexOf[T any](arr []T, f func(val T) bool) int { //Получение ин
 	return -1
 }
 
-func Some[T any](arr []T, f func(val T) bool) bool { //Проверить, есть элемент по заданным условиям
+//Проверят, есть элемент по заданным условиям.
+func Some[T any](arr []T, f func(val T) bool) bool {
 	g := IndexOf(arr, f)
 	return g != -1
 }
 
-func Filter[T any](arr []T, f func(val T) bool) []T { //Фильтрация списка и получение нового массива
+//Фильтрация списка и получение нового массива.
+func Filter[T any](arr []T, f func(val T) bool) []T {
 	g1 := make([]T, 0)
 
 	for _, i := range arr {
@@ -91,7 +99,8 @@ func Filter[T any](arr []T, f func(val T) bool) []T { //Фильтрация с�
 	return g1
 }
 
-/*func Find[T any](arr []T, f func(val T) bool) []T { //Поиск элемента по условию, Filter делает тоже самое
+//Поиск элемента по условию, Filter делает тоже самое.
+func Find[T any](arr []T, f func(val T) bool) []T {
 	g := make([]T, 0)
 	for _, i := range arr {
 		if f(i) {
@@ -99,13 +108,15 @@ func Filter[T any](arr []T, f func(val T) bool) []T { //Фильтрация с�
 		}
 	}
 	return g
-}*/
+}
 
-func Sort[T any](arr []T, f func(first T, second T) int) []T { //Сортировка массива и получение упорядоченного массива по заданному условию
+//Сортировка массива и получение упорядоченного массива по заданному условию.
+func Sort[T any](arr []T, f func(first T, second T) int) []T {
 	for i, y := range arr {
 		for i1, y1 := range arr {
 			hh := f(y, y1)
-			if hh < 0 { // методом пузырька
+			// Сортировка пузырьком.
+			if hh < 0 {
 				buf := arr[i]
 				arr[i] = arr[i1]
 				arr[i1] = buf
@@ -115,13 +126,15 @@ func Sort[T any](arr []T, f func(first T, second T) int) []T { //Сортиро�
 	return arr
 }
 
-func ForEach[T any](arr []T, f func(val T)) { //Перебор каждого элемента массива и выполнение какой либо функции на каждом шаге
+//Перебор каждого элемента массива и выполнение какой либо функции на каждом шаге.
+func ForEach[T any](arr []T, f func(val T)) {
 	for _, y := range arr {
 		f(y)
 	}
 }
 
-func Map[TIn any, TOut any](arr []TIn, f func(val TIn) TOut) []TOut { //Формирование нового массива по функции трансформации
+//Формирование нового массива по функции трансформации.
+func Map[TIn any, TOut any](arr []TIn, f func(val TIn) TOut) []TOut {
 	gg := make([]TOut, len(arr))
 	for _, y := range arr {
 		gg = append(gg, f(y))
@@ -129,13 +142,7 @@ func Map[TIn any, TOut any](arr []TIn, f func(val TIn) TOut) []TOut { //Форм
 	return gg
 }
 
-/*func main() {// Закемментил, потому что перенес все выводы и структуру в run.go
-arr := []*User{
-	&User{id: "123534", name: "Ivan", email: "212Ivan@gmail.com", age: 12},
-	&User{id: "432432", name: "Petr", email: "Petr.21Gd.2@mail.ru", age: 21},
-	&User{id: "564354", name: "Sergey", email: "Sergey_ggF@gmail.com", age: 43},
-	&User{id: "543566", name: "Alexander", email: "Alexander2@mail.ru", age: 16},
-}
+/*func Run() {// Закемментил, потому что перенес все выводы и структуру в run.go
 //f1 := taskOne(arr)
 
 /*for _, user := range f1 {

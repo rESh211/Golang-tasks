@@ -89,7 +89,7 @@ func forEach[T any](arr []T, f func(val T)) {
 	}
 }
 
-/*func map[TIn any, TOut any](arr []TIn, f func(val TIn) TOut) []TOut {
+func map1[TIn any, TOut any](arr []TIn, f func(val TIn) TOut) []TOut {
 	newArr := make([]TOut, len(arr))
 	for _, j := range arr {
 		newArr = append(newArr, f(j))

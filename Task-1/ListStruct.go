@@ -24,14 +24,16 @@ func CreateList[T any]() *List[T] {
 func (list *List[T]) ForEach(f func(val *T)) {
 	current := list
 	for current != nil {
-		if current.value != nil { // Проверяем, что значение не nil
+		// Проверяем, что значение не nil.
+		if current.value != nil {
 			f(current.value)
 		}
 		current = current.next
 	}
 }
 
-func (list *List[T]) Filter(f func(val *T) bool) *List[T] { //Фильтрация списка и получение нового массива
+//Фильтрация списка и получение нового массива.
+func (list *List[T]) Filter(f func(val *T) bool) *List[T] {
 	fgg := CreateList[T]()
 
 	list.ForEach(func(value *T) {
@@ -41,10 +43,13 @@ func (list *List[T]) Filter(f func(val *T) bool) *List[T] { //Фильтраци
 	})
 	return fgg
 }
-func (list *List[T]) IndexOf(f func(val *T) bool) int { //Получение индекса элемента по заданному условию
+
+//Получение индекса элемента по заданному условию.
+func (list *List[T]) IndexOf(f func(val *T) bool) int {
 	c := list
 	index := 0
-	for c != nil { // Проходим по всем элементам списка
+	// Проходим по всем элементам списка.
+	for c != nil {
 		if c.value != nil && f(c.value) {
 			return index
 		}
@@ -54,7 +59,8 @@ func (list *List[T]) IndexOf(f func(val *T) bool) int { //Получение и�
 	return -1
 }
 
-func (list *List[T]) Some(f func(val *T) bool) bool { // Проверить, есть элемент по заданным условиям
+// Проверить, есть элемент по заданным условиям.
+func (list *List[T]) Some(f func(val *T) bool) bool {
 	g := list.IndexOf(f)
 	return g != -1
 }
@@ -63,8 +69,8 @@ func (list *List[T]) Push(value *T) {
 	current := list
 
 	fmt.Println(value)
-
-	if current.value == nil { // проверка на пустой список
+	// Проверка на пустой список.
+	if current.value == nil {
 		fmt.Println("Первая ячейка пустая")
 		current.value = value
 	} else {
