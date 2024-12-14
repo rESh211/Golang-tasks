@@ -1,8 +1,6 @@
 package main
 
-import (
-	products "github.com/rESh211/golang-tasks/Task-2.1"
-)
+import abstract "github.com/rESh211/golang-tasks/Task-2.3"
 
 /*
 В данном файле и только в нем будет хранится функция main
@@ -28,7 +26,8 @@ import legacy "github.com/rESh211/golang-tasks/Legacy"
 Подробные шпаргалки в файле HELP.md. Его удобнее смотреть на самом github, там он красиво рисуется
 */
 func main() {
-	products.Run()
+	//products.Run()
 	//task1.Run()
 	//run.Run()
+	abstract.Run()
 }
