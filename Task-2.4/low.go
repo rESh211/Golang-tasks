@@ -11,3 +11,15 @@ func FindMin[T constraints.Ordered](arr []T) T {
 	}
 	return min
 }
+
+func Reverse[T any](arr []T) []T {
+	index := len(arr) - 1
+	var reversed []T
+
+	for index >= 0 {
+		reversed = append(reversed, arr[index])
+		index--
+	}
+
+	return reversed
+}
