@@ -1,6 +1,6 @@
 package main
 
-import abstract "github.com/rESh211/golang-tasks/Task-2.3"
+import task24 "github.com/rESh211/golang-tasks/Task-2.4"
 
 /*
 В данном файле и только в нем будет хранится функция main
@@ -29,5 +29,6 @@ func main() {
 	//products.Run()
 	//task1.Run()
 	//run.Run()
-	abstract.Run()
+	//abstract.Run()
+	task24.Run()
 }
