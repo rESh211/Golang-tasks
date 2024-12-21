@@ -4,5 +4,8 @@ import "fmt"
 
 func Run() {
 	arr := []int{1, 2, 3, 4, 5, 6}
-	fmt.Println(FindMin(arr))
+	//fmt.Println(FindMin(arr))
+	//.Println(Reverse(arr))
+	//PrintArray(arr)
+	fmt.Println(Sum(arr))
 }
