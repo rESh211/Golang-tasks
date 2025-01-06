@@ -2,27 +2,43 @@ package task24
 
 import (
 	"fmt"
+	"sort"
 
 	"golang.org/x/exp/constraints"
+	"golang.org/x/text/number"
 )
 
-// тип Queue с методами Enqueue и Dequeue.
-type Queue[T constraints.Ordered] struct {
+// Тип Queue с методами Add и Delete.
+type Queue[T any] struct {
 	element []T
+	size    int
 }
 
-func (queue *Queue[T]) Enqueue(element T) {
+func (queue *Queue[T]) Add(element T) {
 	queue.element = append(queue.element, element)
-
+	queue.size++
 }
 
-func (queue *Queue[T]) Dequeue() T {
-	if len(queue.element) == 0 {
+func (queue *Queue[T]) Delete() (T, bool) {
+	if queue.size == 0 {
 		fmt.Println("Пусто")
+		var zero T
+		return zero, false
 	}
 	val := queue.element[0]
 	queue.element = queue.element[1:]
-	return val
+	queue.size--
+	return val, true
+}
+
+// Метод для получения размера очереди
+func (queue *Queue[T]) Size() int {
+	return queue.size
+}
+
+// Метод пуста ли очередь
+func (queue *Queue[T]) Empty() bool {
+	return queue.size == 0
 }
 
 // Находит минимальное значение в массиве.
@@ -37,28 +53,34 @@ func FindMin[T constraints.Ordered](arr []T) T {
 }
 
 // Меняет порядок элементов в массиве.
-func Reverse[T constraints.Ordered](arr []T) []T {
+func Reverse[T any](arr []T) []T {
 	index := len(arr) - 1
 	var reversed []T
 
-	for index >= 0 {
-		reversed = append(reversed, arr[index])
-		index--
+	for i := index; i >= 0; index-- {
+		reversed = append(reversed, arr[i])
 	}
 
 	return reversed
 }
 
 // Выводит элементы массива на консоль.
-func PrintArray[T constraints.Ordered](arr []T) {
-	for _, y := range arr {
+func PrintArray[T any](arr []T, word string) {
+	for i, y := range arr {
+		if i > 0 {
+			fmt.Println(", ")
+		}
 		fmt.Println(y)
 	}
+	fmt.Print(word)
 }
 
 // Вычисляет сумму элементов в массиве (ограничение на числовые типы).
 func Sum[T constraints.Ordered](arr []T) T {
 	var numder T
+	if arr != nil && len(arr) == 0 {
+		return numder
+	}
 	for _, y := range arr {
 		numder += y
 	}
@@ -66,7 +88,7 @@ func Sum[T constraints.Ordered](arr []T) T {
 }
 
 // Тип LinkedList с методами добавления, удаления и поиска элементов.
-type LinkedList[T constraints.Ordered] struct {
+type LinkedList[T any] struct {
 	//Указатель на следующий элемент.
 	next *LinkedList[T]
 	//Хранимое значение.
@@ -94,27 +116,34 @@ func (linkedList *LinkedList[T]) Get(index int) T {
 }
 
 // Поиск элемента в массиве.
-func (linkedList *LinkedList[T]) Search(element T) bool {
-	next := linkedList
-	if next != nil {
-		if next.value == element {
-			return true
+func (linkedList *LinkedList[T]) IndexOf(arr []T, element int) int {
+	for i, y := range arr {
+		if element == y {
+			return i
 		}
 	}
-	return false
-}
-
-// Поиск элемента в массиве.
-func ElementSearch[T constraints.Ordered](arr []T, element T) bool {
-	for _, y := range arr {
-		if y == element {
-			return true
-		}
-	}
-	return false
+	return -1
 }
 
 // Тип Map, который хранит пары ключ-значение (ключ - comparable, значение - любое).
 type Map[T constraints.Ordered, meaning any] struct {
 	key map[T]meaning
+}
+
+//Метод добавления в Мап
+func (map *Map[T, meaning])Add(one T, two meaning){
+	map.key[one]=two
+}
+
+func(map *Map[T,meaning])Get(number T)(meaning,bool){
+	number, text:=map.key[number]
+	return number, text
+}
+
+// Напишите дженерическую функцию Sort, которая сортирует массив (ограничение на упорядоченные типы).
+func Sort[T constraints.Ordered](arr []T, sorting func(a, b T) bool) []T {
+	sort.Slice(arr, func(i, j int) bool {
+		return sorting(arr[i], arr[j])
+	})
+	return arr
 }
